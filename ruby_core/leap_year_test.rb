@@ -3,15 +3,19 @@ require 'test/unit'
 require 'leap_year'
 
 class LeapYearTest < Test::Unit::TestCase
-  def test_century_1700_false
-    assert_equal(false, leap_year?(1700), "1700 is not a leap year")
+  def test_century_with_divide_by_400_leap_year
+    assert_equal(true, leap_year?(2000))
   end
 
-  def test_normal_year_2006_false
-    assert_equal(false, leap_year?(2006), "2006 is not a leap year")
+  def test_century_with_divide_by_100_not_leap_year
+    assert_equal(false, leap_year?(1900))
   end
 
-  def test_leap_year_2004_true
-    assert_equal(true, leap_year?(2004), "2004 is a leap year")
+  def test_year_with_divide_by_4_leap_year
+    assert_equal(true, leap_year?(2004))
+  end
+
+  def test_year_with_no_divide_by_4_not_leap_year
+    assert_equal(false, leap_year?(2005))
   end
 end                                 
